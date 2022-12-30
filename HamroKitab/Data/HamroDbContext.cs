@@ -1,10 +1,11 @@
 ﻿using HamroKitab.Model;
+using HamroKitab.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace HamroKitab.Data
 {
-    public class HamroDbContext : DbContext
+    public class HamroDbContext : IdentityDbContext<ApplicationUser>
     {
         public HamroDbContext (DbContextOptions<HamroDbContext> options) : base(options)
         {
@@ -32,7 +33,7 @@ namespace HamroKitab.Data
             modelBuilder.Entity<Category_Books>().HasOne(m => m.Category).WithMany(am => am.Category_Books).HasForeignKey(m => m.CategoryId).OnDelete(DeleteBehavior.Cascade);
 
 
-           /* base.OnModelCreating(modelBuilder);*/
+            base.OnModelCreating(modelBuilder);
         }
 
 

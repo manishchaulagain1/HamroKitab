@@ -2,6 +2,10 @@ using Microsoft.EntityFrameworkCore;
 using HamroKitab.Data.Services;
 using HamroKitab.Data;
 using HamroKitab.Data.Cart;
+using HamroKitab.Models;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Identity;
+using System;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,7 +25,15 @@ builder.Services.AddScoped<ICategoryService, CategoryService>();
 
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 builder.Services.AddScoped(sc => ShoppingCart.GetShoppingCart(sc));
+
+//Authentication and authorization
+builder.Services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<HamroDbContext>();
+builder.Services.AddMemoryCache();
 builder.Services.AddSession();
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+});
 
 builder.Services.AddControllersWithViews();
 
@@ -33,7 +45,11 @@ app.MapDefaultControllerRoute();
 app.UseStaticFiles();
 app.UseSession();
 
+app.UseAuthentication();
+app.UseAuthorization();
+
 //Seeding
 HamroDbInitializer.Seed(app);
+HamroDbInitializer.SeedUsersAndRolesAsync(app).Wait();
 
 app.Run();

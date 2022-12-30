@@ -24,21 +24,21 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Books" asp-action="Index"><i class="fa fa-book"></i> Books</a>
                         </li>
 
-                      @*  @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))*@
+                        @*  @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))*@
                         @*{*@
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="bi bi-gear-fill"></i> Management
-                                </a>
+                            </a>
 
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" asp-controller="Author" asp-action="Index"><i class="bi bi-person-fill"></i> Author</a>
                                 <a class="dropdown-item" asp-controller="Publisher" asp-action="Index"><i class="bi bi-award-fill"></i> Publisher</a>
                                 <a class="dropdown-item" asp-controller="Category" asp-action="Index"><i class="bi bi-list-ul"></i> Category</a>
-                                </div>
-                            </li>
+                            </div>
+                        </li>
                         @*}*@
-                 
+
                     </ul>
 
                     <form class="form-inline my-2 my-lg-0" asp-controller="Books" asp-action="Filter" style="padding-right: 25px;">
@@ -49,6 +49,13 @@
                     <ul class="navbar-nav">
                         @await Component.InvokeAsync("ShoppingCartSummary")
                     </ul>
+                    <a class="btn btn-outline-success my-2 my-sm-0" asp-controller="Account" asp-action="Login">
+                        <i class="bi bi box-arrow-in-right"></i> Log in
+                    </a>
+
+                    <a class="btn btn-outline-primary my-2 my-sm-0" asp-controller="Account" asp-action="Register">
+                        <i class="bi bi-person-plus"></i> Register
+                    </a>
 
                     <div class="dropdown">
                         <button class="btn btn-outline-success dropdown-toggle" type="button" id="profile-btn" data-toggle="dropdown" aria-expanded="false">
@@ -57,7 +64,7 @@
                         <ul class="dropdown-menu" aria-labelledby="profile-btn">
                             <li>
                                 <a class="dropdown-item" asp-controller="Order" asp-action="Index">
-                                    <i class="bi bi-list"></i> Orderssssss
+                                    <i class="bi bi-list"></i> Orders
                                 </a>
                             </li>
                         </ul>
