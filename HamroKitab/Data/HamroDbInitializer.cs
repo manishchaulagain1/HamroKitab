@@ -1,6 +1,5 @@
 ﻿using HamroKitab.Data.Static;
 using HamroKitab.Model;
-using HamroKitab.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;

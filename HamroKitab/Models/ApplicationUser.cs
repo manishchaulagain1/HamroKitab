@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using System.ComponentModel.DataAnnotations;
 
-namespace HamroKitab.Models
+namespace HamroKitab.Model
 {
     public class ApplicationUser: IdentityUser
     {

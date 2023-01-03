@@ -1,5 +1,4 @@
 ﻿using HamroKitab.Model;
-using HamroKitab.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 

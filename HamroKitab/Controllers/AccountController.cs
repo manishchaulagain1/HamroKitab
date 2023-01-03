@@ -1,7 +1,7 @@
 ﻿using HamroKitab.Data;
 using HamroKitab.Data.Static;
 using HamroKitab.Data.ViewModels;
-using HamroKitab.Models;
+using HamroKitab.Model;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 

@@ -2,7 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using HamroKitab.Data.Services;
 using HamroKitab.Data;
 using HamroKitab.Data.Cart;
-using HamroKitab.Models;
+using HamroKitab.Model;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
 using System;
