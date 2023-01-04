@@ -20,8 +20,10 @@ namespace HamroKitab.Controllers
 
         public async Task<IActionResult> Index()
         {
-            string userId = "";
-            var order = await _orderService.GetOrdersByUserIdAsync(userId);
+            string userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            string userRole = User.FindFirstValue(ClaimTypes.Role);
+
+            var order = await _orderService.GetOrdersByUserIdAndRoleAsync(userId,userRole);
             return View(order);
         }
         public IActionResult ShoppingCart()
@@ -60,8 +62,8 @@ namespace HamroKitab.Controllers
         public async Task<IActionResult> CompleteOrder()
         {
             var items = _shoppingCart.GetShoppingCartItems();
-            string userId = "";
-            string userEmailAddress = "";
+            string userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            string userEmailAddress = User.FindFirstValue(ClaimTypes.Email);
 
             await _orderService.StoreOrderAsync(items, userId, userEmailAddress);
             await _shoppingCart.ClearShoppingCartAsync();
